@@ -1,0 +1,1396 @@
+<!DOCTYPE html>
+<html lang="en" class="dark scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Stavan Wadekar | Software Engineer &amp; Cybersecurity | stavanwadekar.cv</title>
+  <meta name="description" content="Personal CV and technical portfolio of Stavan Shamuvel Wadekar, Computer Science student focused on cybersecurity, VAPT, DevSecOps, and AI infrastructure." />
+  <link rel="canonical" href="https://stavanwadekar.cv/" />
+
+  <!-- Open Graph & Social Previews -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://stavanwadekar.cv/" />
+  <meta property="og:title" content="Stavan Wadekar | Software Engineer &amp; Cybersecurity" />
+  <meta property="og:description" content="Security scanners, TLS MITM proxy bridges, authorized VAPT work, merged open-source PR #14006, and published Zenodo research." />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Stavan Wadekar | Software Engineer &amp; Cybersecurity" />
+  <meta name="twitter:description" content="Interactive CV and technical portfolio of Stavan Wadekar (stavanwadekar.cv)." />
+
+  <!-- Inline SVG Monogram Favicon (Zero External Requests) -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23070b14'/%3E%3Crect x='2' y='2' width='60' height='60' rx='12' fill='none' stroke='%230ea5e9' stroke-width='3'/%3E%3Ctext x='32' y='41' text-anchor='middle' font-family='monospace' font-size='26' font-weight='700' fill='%23f8fafc'%3ESW%3C/text%3E%3C/svg%3E" />
+
+  <!-- Prevent Light-Mode Flash (FOUC) Before First Paint -->
+  <script>
+    (function () {
+      try {
+        if (localStorage.getItem('stavan_cv_theme') === 'light') {
+          document.documentElement.classList.remove('dark');
+        }
+      } catch (e) {}
+    })();
+  </script>
+
+  <!-- Google Fonts: Inter & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
+            mono: ['JetBrains Mono', 'Fira Code', 'ui-monospace', 'SFMono-Regular', 'Menlo', 'monospace'],
+          },
+          colors: {
+            obsidian: '#070b14',
+            panel: '#0f1624',
+            card: '#131c2e',
+          }
+        }
+      }
+    };
+  </script>
+  <style>
+    :root {
+      color-scheme: dark;
+    }
+    html:not(.dark) {
+      color-scheme: light;
+    }
+    .bg-grid-dark {
+      background-image: radial-gradient(rgba(56, 189, 248, 0.11) 1px, transparent 1px);
+      background-size: 28px 28px;
+    }
+    .bg-grid-light {
+      background-image: radial-gradient(rgba(15, 23, 42, 0.07) 1px, transparent 1px);
+      background-size: 28px 28px;
+    }
+    .glass-nav {
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+    }
+
+    /* Scroll Progress Bar */
+    #scroll-progress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 2px;
+      width: 0%;
+      background: linear-gradient(90deg, #0ea5e9, #10b981);
+      z-index: 60;
+      transition: width 0.08s linear;
+    }
+
+    /* Ambient Hero Glow Drift */
+    @keyframes floatGlow {
+      0%, 100% { transform: translate(-50%, 0px) scale(1); }
+      50% { transform: translate(-48%, 14px) scale(1.06); }
+    }
+    .hero-glow {
+      animation: floatGlow 10s ease-in-out infinite;
+    }
+
+    /* Hero Staggered Entrance */
+    @keyframes heroFadeUp {
+      from { opacity: 0; transform: translateY(18px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .hero-stagger > * {
+      opacity: 0;
+      animation: heroFadeUp 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    }
+    .hero-stagger > *:nth-child(1) { animation-delay: 0.05s; }
+    .hero-stagger > *:nth-child(2) { animation-delay: 0.14s; }
+    .hero-stagger > *:nth-child(3) { animation-delay: 0.23s; }
+    .hero-stagger > *:nth-child(4) { animation-delay: 0.32s; }
+
+    /* Terminal Blinking Cursor */
+    @keyframes blinkCursor {
+      0%, 49% { opacity: 1; }
+      50%, 100% { opacity: 0; }
+    }
+    .term-cursor {
+      display: inline-block;
+      width: 7px;
+      height: 13px;
+      background: #38bdf8;
+      vertical-align: middle;
+      margin-left: 3px;
+      animation: blinkCursor 1s step-end infinite;
+    }
+
+    /* Scroll Reveal */
+    .reveal {
+      opacity: 0;
+      transform: translateY(22px);
+      transition: opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1), transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Interactive Cursor Spotlight Cards */
+    .spotlight-card {
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.25s ease, box-shadow 0.25s ease;
+    }
+    .spotlight-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(380px circle at var(--mx, -200px) var(--my, -200px), rgba(56, 189, 248, 0.12), transparent 65%);
+      opacity: 0;
+      transition: opacity 0.25s ease;
+      pointer-events: none;
+    }
+    .spotlight-card:hover::before {
+      opacity: 1;
+    }
+    .spotlight-card:hover {
+      transform: translateY(-4px);
+    }
+
+    /* Modal Entrance */
+    @keyframes modalPop {
+      from { opacity: 0; transform: scale(0.96) translateY(8px); }
+      to { opacity: 1; transform: scale(1) translateY(0); }
+    }
+    .modal-panel {
+      animation: modalPop 0.2s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    @keyframes pulseDot {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.45; transform: scale(0.85); }
+    }
+    .live-dot {
+      animation: pulseDot 2.2s infinite ease-in-out;
+    }
+
+    .nav-link.active-nav {
+      color: #0284c7;
+    }
+    .dark .nav-link.active-nav {
+      color: #38bdf8;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+      .reveal, .hero-stagger > * {
+        opacity: 1 !important;
+        transform: none !important;
+      }
+    }
+    @media print {
+      header, #scroll-progress, #cmd-modal, #project-modal, #toast, .no-print, #terminal-card, #project-filters, #skill-search {
+        display: none !important;
+      }
+      html, body, main, section, article, div, footer {
+        background: #ffffff !important;
+        background-image: none !important;
+        color: #0f172a !important;
+        border-color: #cbd5e1 !important;
+        box-shadow: none !important;
+      }
+      h1, h2, h3, strong {
+        color: #000000 !important;
+      }
+      p, li, span, a {
+        color: #1e293b !important;
+      }
+      a {
+        text-decoration: underline !important;
+      }
+      section, article {
+        break-inside: avoid;
+      }
+      section {
+        padding-top: 10px !important;
+        padding-bottom: 10px !important;
+      }
+      .reveal, .hero-stagger > * {
+        opacity: 1 !important;
+        transform: none !important;
+      }
+    }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-900 dark:bg-obsidian dark:text-slate-100 font-sans antialiased selection:bg-sky-500/30 selection:text-sky-200 transition-colors duration-200">
+
+  <!-- Keyboard Skip Link -->
+  <a href="#top" class="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[70] focus:px-4 focus:py-2 focus:rounded-lg focus:bg-sky-600 focus:text-white focus:text-xs focus:font-semibold focus:shadow-lg">Skip to main content</a>
+
+  <!-- Top Scroll Progress Line -->
+  <div id="scroll-progress" aria-hidden="true"></div>
+
+  <!-- Subtle Background Grid -->
+  <div class="fixed inset-0 pointer-events-none bg-grid-light dark:bg-grid-dark opacity-70 -z-10 no-print"></div>
+  <div class="fixed top-0 left-1/2 w-[760px] h-[360px] bg-sky-500/10 dark:bg-sky-500/12 blur-[120px] rounded-full pointer-events-none -z-10 no-print hero-glow"></div>
+
+  <!-- Sticky Navigation -->
+  <header class="sticky top-0 z-40 border-b border-slate-200/80 dark:border-slate-800/80 bg-white/80 dark:bg-obsidian/80 glass-nav">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between gap-3">
+      <a href="#top" class="flex items-center gap-2.5 font-mono text-sm font-semibold tracking-tight text-slate-900 dark:text-white shrink-0">
+        <span class="w-2 h-2 rounded-full bg-emerald-400 live-dot"></span>
+        <span>stavanwadekar<span class="text-sky-500">.cv</span></span>
+      </a>
+
+      <nav aria-label="Primary" class="hidden md:flex items-center gap-6 text-sm font-medium text-slate-600 dark:text-slate-300">
+        <a href="#experience" class="nav-link hover:text-sky-600 dark:hover:text-sky-400 transition-colors">Experience</a>
+        <a href="#projects" class="nav-link hover:text-sky-600 dark:hover:text-sky-400 transition-colors">Projects</a>
+        <a href="#skills" class="nav-link hover:text-sky-600 dark:hover:text-sky-400 transition-colors">Skills</a>
+        <a href="#publications" class="nav-link hover:text-sky-600 dark:hover:text-sky-400 transition-colors">Research</a>
+        <a href="#contact" class="nav-link hover:text-sky-600 dark:hover:text-sky-400 transition-colors">Contact</a>
+      </nav>
+
+      <div class="flex items-center gap-2">
+        <button id="open-cmd-btn" type="button" title="Quick Search (Ctrl+K)" class="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs font-mono border border-slate-200 dark:border-slate-700/80 bg-slate-100/80 dark:bg-slate-800/70 text-slate-600 dark:text-slate-300 hover:border-sky-500/60 transition-colors">
+          <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+          <span class="hidden sm:inline">Search</span>
+          <kbd class="hidden sm:inline px-1 py-0.5 text-[10px] rounded bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700">Ctrl+K</kbd>
+        </button>
+
+        <button id="theme-toggle" type="button" aria-label="Toggle color theme" class="p-2 rounded-lg border border-slate-200 dark:border-slate-700/80 bg-slate-100/80 dark:bg-slate-800/70 text-slate-700 dark:text-slate-200 hover:border-sky-500/60 transition-colors">
+          <svg class="w-4 h-4 hidden dark:block" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+          <svg class="w-4 h-4 block dark:hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+        </button>
+
+        <button id="print-cv-btn" type="button" class="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold bg-sky-600 hover:bg-sky-500 text-white shadow-sm transition-colors">
+          <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><path d="M6 9V3a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v6"/><rect x="6" y="14" width="12" height="8" rx="1"/></svg>
+          <span>Save PDF</span>
+        </button>
+
+        <button id="mobile-menu-btn" type="button" aria-label="Toggle navigation menu" aria-expanded="false" class="md:hidden p-2 rounded-lg border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200">
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Nav Drawer -->
+    <div id="mobile-menu" class="hidden md:hidden border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-panel px-4 py-3 space-y-2 text-sm font-medium">
+      <a href="#experience" class="block py-1.5 text-slate-700 dark:text-slate-200 hover:text-sky-500">Experience</a>
+      <a href="#projects" class="block py-1.5 text-slate-700 dark:text-slate-200 hover:text-sky-500">Projects</a>
+      <a href="#skills" class="block py-1.5 text-slate-700 dark:text-slate-200 hover:text-sky-500">Skills</a>
+      <a href="#publications" class="block py-1.5 text-slate-700 dark:text-slate-200 hover:text-sky-500">Research &amp; Education</a>
+      <a href="#contact" class="block py-1.5 text-slate-700 dark:text-slate-200 hover:text-sky-500">Contact</a>
+      <button id="mobile-print-btn" type="button" class="w-full mt-2 inline-flex items-center justify-center gap-1.5 px-3 py-2 rounded-lg text-xs font-semibold bg-sky-600 text-white">
+        <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><path d="M6 9V3a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v6"/><rect x="6" y="14" width="12" height="8" rx="1"/></svg>
+        <span>Print / Save as PDF</span>
+      </button>
+    </div>
+  </header>
+
+  <main id="top" class="max-w-5xl mx-auto px-4 sm:px-6 pb-20">
+
+    <!-- Hero Section -->
+    <section class="pt-12 pb-14 sm:pt-16 sm:pb-16">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+        <!-- Left Intro -->
+        <div class="lg:col-span-7 space-y-5 hero-stagger">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-medium border border-emerald-500/30 bg-emerald-500/10 text-emerald-700 dark:text-emerald-300">
+            <span class="w-2 h-2 rounded-full bg-emerald-400 live-dot"></span>
+            <span>Open to Cybersecurity &amp; SWE Roles, Mumbai</span>
+          </div>
+
+          <div class="space-y-2">
+            <h1 class="text-4xl sm:text-5xl font-extrabold tracking-tight text-slate-900 dark:text-white leading-[1.1]">
+              Stavan Wadekar
+            </h1>
+            <p class="text-lg sm:text-xl font-semibold text-sky-600 dark:text-sky-400">
+              Software Engineer / Cybersecurity &amp; DevSecOps
+            </p>
+          </div>
+
+          <p class="text-slate-600 dark:text-slate-300 text-base leading-relaxed max-w-2xl">
+            B.Sc. Computer Science student building security scanners, TLS proxy bridges, and AI developer tools. Experienced in authorized VAPT engagements, upstream open-source work, and published research.
+          </p>
+
+          <div class="flex flex-wrap items-center gap-3 pt-1 no-print">
+            <a href="#projects" class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-semibold bg-slate-900 dark:bg-white text-white dark:text-slate-950 hover:opacity-90 active:scale-[0.98] transition-all shadow-sm">
+              <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+              <span>Explore Projects</span>
+            </a>
+
+            <a href="https://github.com/steve25060" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-semibold border border-slate-300 dark:border-slate-700 bg-white dark:bg-card text-slate-800 dark:text-slate-100 hover:border-sky-500/70 active:scale-[0.98] transition-all">
+              <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
+              <span>github.com/steve25060</span>
+            </a>
+
+            <button id="copy-email-hero" type="button" class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-semibold border border-slate-300 dark:border-slate-700 bg-white dark:bg-card text-slate-800 dark:text-slate-100 hover:border-sky-500/70 active:scale-[0.98] transition-all">
+              <svg class="w-4 h-4 text-sky-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+              <span>Copy Email</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Right Interactive Terminal -->
+        <div id="terminal-card" class="lg:col-span-5">
+          <div class="rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-950 text-slate-100 shadow-2xl overflow-hidden">
+            <div class="px-4 py-2.5 bg-slate-900 border-b border-slate-800 flex items-center justify-between">
+              <div class="flex items-center gap-1.5">
+                <span class="w-2.5 h-2.5 rounded-full bg-rose-500/80"></span>
+                <span class="w-2.5 h-2.5 rounded-full bg-amber-400/80"></span>
+                <span class="w-2.5 h-2.5 rounded-full bg-emerald-400/80"></span>
+              </div>
+              <span class="font-mono text-[11px] text-slate-400">stavan@cv:~</span>
+              <span class="font-mono text-[10px] text-emerald-400">zsh</span>
+            </div>
+
+            <div id="term-output" aria-live="polite" class="p-4 font-mono text-xs leading-relaxed h-60 overflow-y-auto space-y-2 text-slate-300"></div>
+
+            <!-- Quick Command Chips -->
+            <div class="px-3 py-2 bg-slate-900/70 border-t border-slate-800/80 flex flex-wrap gap-1.5">
+              <button type="button" data-cmd="whoami" class="term-chip px-2 py-0.5 rounded font-mono text-[11px] bg-slate-800 hover:bg-sky-500/20 text-sky-300 border border-slate-700 transition-colors">whoami</button>
+              <button type="button" data-cmd="skills" class="term-chip px-2 py-0.5 rounded font-mono text-[11px] bg-slate-800 hover:bg-sky-500/20 text-sky-300 border border-slate-700 transition-colors">skills</button>
+              <button type="button" data-cmd="projects" class="term-chip px-2 py-0.5 rounded font-mono text-[11px] bg-slate-800 hover:bg-sky-500/20 text-sky-300 border border-slate-700 transition-colors">projects</button>
+              <button type="button" data-cmd="contact" class="term-chip px-2 py-0.5 rounded font-mono text-[11px] bg-slate-800 hover:bg-sky-500/20 text-sky-300 border border-slate-700 transition-colors">contact</button>
+              <button type="button" data-cmd="clear" class="term-chip px-2 py-0.5 rounded font-mono text-[11px] bg-slate-800 hover:bg-rose-500/20 text-slate-400 hover:text-rose-300 border border-slate-700 transition-colors">clear</button>
+            </div>
+
+            <form id="term-form" class="px-3 py-2 bg-slate-900 border-t border-slate-800 flex items-center gap-2">
+              <label for="term-input" class="font-mono text-xs text-emerald-400 shrink-0">$</label>
+              <input id="term-input" type="text" autocomplete="off" placeholder="Type help, whoami, skills, projects..." class="w-full bg-transparent font-mono text-xs text-slate-100 placeholder-slate-500 focus:outline-none" />
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <!-- Key Metrics Strip -->
+      <div id="metrics-strip" class="mt-10 grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4">
+        <div class="spotlight-card rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-card p-4 hover:border-sky-500/50">
+          <div class="font-mono text-2xl font-bold text-slate-900 dark:text-white"><span class="count-up" data-target="350" data-suffix="+">350+</span></div>
+          <div class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">LLM Providers Routed (PR #14006)</div>
+        </div>
+        <div class="spotlight-card rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-card p-4 hover:border-sky-500/50">
+          <div class="font-mono text-2xl font-bold text-sky-600 dark:text-sky-400"><span class="count-up" data-target="19" data-suffix="">19</span></div>
+          <div class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">Security Engines in SecureLens</div>
+        </div>
+        <div class="spotlight-card rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-card p-4 hover:border-sky-500/50">
+          <div class="font-mono text-2xl font-bold text-emerald-600 dark:text-emerald-400"><span class="count-up" data-target="90" data-suffix="%">90%</span></div>
+          <div class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">Agent Telemetry Token Reduction</div>
+        </div>
+        <div class="spotlight-card rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-card p-4 hover:border-sky-500/50">
+          <div class="font-mono text-2xl font-bold text-slate-900 dark:text-white">Zenodo</div>
+          <div class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">Published Paper (Zenodo)</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Experience & Leadership -->
+    <section id="experience" class="py-12 border-t border-slate-200/80 dark:border-slate-800/80 reveal">
+      <div class="mb-7">
+        <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900 dark:text-white">Experience &amp; Leadership</h2>
+      </div>
+
+      <div class="space-y-5">
+        <!-- Uptoskills -->
+        <article class="spotlight-card rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-card p-5 sm:p-6 hover:border-sky-500/50">
+          <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2">
+            <div>
+              <h3 class="text-lg font-bold text-slate-900 dark:text-white">Cybersecurity Intern</h3>
+              <p class="text-sm font-medium text-sky-600 dark:text-sky-400">Uptoskills (Remote) | Ref: US-EXP-2026-J7QVQ76</p>
+            </div>
+            <span class="font-mono text-xs px-2.5 py-1 rounded-md bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 w-fit">Apr 2026 - Jul 2026</span>
+          </div>
+          <ul class="mt-4 space-y-2 text-sm text-slate-600 dark:text-slate-300 list-disc pl-5">
+            <li>Executed authorized web and infrastructure VAPT across production domains, 19+ enumerated subdomains, and API gateways using <strong class="text-slate-900 dark:text-slate-100">Burp Suite Pro</strong> (Proxy, Intruder, Repeater, Sequencer, Autorize, Param Miner), <strong class="text-slate-900 dark:text-slate-100">Nmap, Amass, ffuf, Gobuster, Nuclei, SQLMap, Nikto, Wapiti, Sn1per, and Metasploit</strong>.</li>
+            <li>Tested OWASP vectors including SQL Injection, Reflected/Stored/DOM XSS, CSRF, SSRF, and Broken Access Control, identifying exposed monitoring metrics, outdated kernels, and missing HSTS/CSP headers with structured remediation reports.</li>
+          </ul>
+          <div class="mt-4 flex flex-wrap gap-1.5">
+            <span class="px-2 py-0.5 rounded font-mono text-[11px] bg-sky-500/10 text-sky-700 dark:text-sky-300">Burp Suite Pro</span>
+            <span class="px-2 py-0.5 rounded font-mono text-[11px] bg-sky-500/10 text-sky-700 dark:text-sky-300">Nmap</span>
+            <span class="px-2 py-0.5 rounded font-mono text-[11px] bg-sky-500/10 text-sky-700 dark:text-sky-300">Amass</span>
+            <span class="px-2 py-0.5 rounded font-mono text-[11px] bg-sky-500/10 text-sky-700 dark:text-sky-300">Nuclei</span>
+            <span class="px-2 py-0.5 rounded font-mono text-[11px] bg-sky-500/10 text-sky-700 dark:text-sky-300">ffuf &amp; Gobuster</span>
+            <span class="px-2 py-0.5 rounded font-mono text-[11px] bg-sky-500/10 text-sky-700 dark:text-sky-300">SQLMap &amp; Metasploit</span>
+          </div>
+        </article>
+
+        <!-- Student Coordinator -->
+        <article class="spotlight-card rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-card p-5 sm:p-6 hover:border-sky-500/50">
+          <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2">
+            <div>
+              <h3 class="text-lg font-bold text-slate-900 dark:text-white">Student Coordinator, IT &amp; CS Department (Bits 'N' Bytes Committee)</h3>
+              <p class="text-sm font-medium text-sky-600 dark:text-sky-400">KSD's Model College, Dombivli</p>
+            </div>
+            <span class="font-mono text-xs px-2.5 py-1 rounded-md bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 w-fit">2025 - 2026</span>
+          </div>
+          <ul class="mt-4 space-y-2 text-sm text-slate-600 dark:text-slate-300 list-disc pl-5">
+            <li>Directed technical operations, scheduling, and on-ground execution for flagship college technical festivals including <strong class="text-slate-900 dark:text-slate-100">e-Logik'26</strong> and <strong class="text-slate-900 dark:text-slate-100">Model Vismayam 2026</strong>.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <!-- Featured Projects -->
+    <section id="projects" class="py-12 border-t border-slate-200/80 dark:border-slate-800/80 reveal">
+      <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-7">
+        <div>
+          <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900 dark:text-white">Projects &amp; Open Source</h2>
+        </div>
+
+        <!-- Filter Pills -->
+        <div id="project-filters" class="flex flex-wrap gap-1.5" role="group" aria-label="Filter projects by category">
+          <button type="button" data-filter="all" class="proj-filter active px-3 py-1.5 rounded-lg text-xs font-semibold bg-sky-600 text-white transition-colors">All (5)</button>
+          <button type="button" data-filter="security" class="proj-filter px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-200/80 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:text-sky-500 transition-colors">Cybersecurity</button>
+          <button type="button" data-filter="ai" class="proj-filter px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-200/80 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:text-sky-500 transition-colors">AI &amp; Systems</button>
+          <button type="button" data-filter="apps" class="proj-filter px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-200/80 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:text-sky-500 transition-colors">Mobile &amp; CLI</button>
+        </div>
+      </div>
+
+      <div id="projects-grid" class="grid grid-cols-1 md:grid-cols-2 gap-5"></div>
+
+      <!-- Additional Open-Source Repos -->
+      <div class="mt-6 rounded-xl border border-slate-200 dark:border-slate-800 bg-white/70 dark:bg-panel/80 p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+        <div class="text-xs sm:text-sm text-slate-600 dark:text-slate-300">
+          <span class="font-semibold text-slate-900 dark:text-white">More public repositories:</span>
+          <a href="https://github.com/steve25060/cyberguard-website" target="_blank" rel="noopener noreferrer" class="ml-1.5 text-sky-600 dark:text-sky-400 hover:underline font-mono">cyberguard-website</a>
+          <span class="mx-1.5 text-slate-400">/</span>
+          <a href="https://github.com/steve25060/omniroute_antigravity" target="_blank" rel="noopener noreferrer" class="text-sky-600 dark:text-sky-400 hover:underline font-mono">omniroute_antigravity</a>
+        </div>
+        <a href="https://github.com/steve25060?tab=repositories" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 text-xs font-semibold text-sky-600 dark:text-sky-400 hover:underline shrink-0">
+          <span>View all on GitHub</span>
+          <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
+        </a>
+      </div>
+    </section>
+
+    <!-- Technical Skills -->
+    <section id="skills" class="py-12 border-t border-slate-200/80 dark:border-slate-800/80 reveal">
+      <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-6">
+        <div>
+          <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900 dark:text-white">Technical Skills</h2>
+        </div>
+
+        <div class="relative w-full sm:w-64 no-print">
+          <svg class="w-4 h-4 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2 pointer-events-none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+          <input id="skill-search" type="text" aria-label="Filter technical skills" placeholder="Filter skills (e.g. Nuclei, Docker)..." class="w-full pl-9 pr-3 py-2 rounded-xl text-xs bg-white dark:bg-card border border-slate-200 dark:border-slate-700 text-slate-800 dark:text-slate-100 placeholder-slate-400 focus:outline-none focus:border-sky-500 transition-colors" />
+        </div>
+      </div>
+
+      <div id="skills-container" class="grid grid-cols-1 md:grid-cols-2 gap-4"></div>
+    </section>
+
+    <!-- Publications, Open Source & Education -->
+    <section id="publications" class="py-12 border-t border-slate-200/80 dark:border-slate-800/80 reveal">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <!-- Publications & Open Source -->
+        <div class="spotlight-card rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-card p-6 space-y-4">
+          <div class="flex items-center gap-2 text-sky-600 dark:text-sky-400">
+            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+            <h2 class="text-lg font-bold text-slate-900 dark:text-white">Publications &amp; Open Source</h2>
+          </div>
+
+          <div class="p-4 rounded-xl bg-slate-50 dark:bg-panel border border-slate-200/80 dark:border-slate-800 space-y-2">
+            <div class="text-xs font-mono text-emerald-600 dark:text-emerald-400">Published Paper (Zenodo)</div>
+            <div class="font-semibold text-sm text-slate-900 dark:text-white">"The AI Flood: Congestion Collapse in Scientific Peer Review"</div>
+            <div class="flex flex-wrap items-center gap-3 pt-1">
+              <a href="https://doi.org/10.5281/zenodo.18638145" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 text-xs font-mono text-sky-600 dark:text-sky-400 hover:underline">
+                <span>doi.org/10.5281/zenodo.18638145</span>
+                <svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg>
+              </a>
+              <button id="copy-doi-btn" type="button" class="text-xs font-medium text-slate-500 hover:text-sky-500 transition-colors no-print">Copy DOI</button>
+            </div>
+          </div>
+
+          <ul class="space-y-2.5 text-sm text-slate-600 dark:text-slate-300">
+            <li class="flex items-start gap-2">
+              <svg class="w-4 h-4 text-emerald-500 mt-0.5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="18" r="3"/><circle cx="6" cy="6" r="3"/><path d="M6 21V9a9 9 0 0 0 9 9"/></svg>
+              <span><strong class="text-slate-900 dark:text-white">OmniRoute Upstream:</strong> Merged <a href="https://github.com/diegosouzapw/OmniRoute/pull/14006" target="_blank" rel="noopener noreferrer" class="text-sky-600 dark:text-sky-400 hover:underline">PR #14006</a> adding dynamic model catalog injection and MITM proxy routing.</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <svg class="w-4 h-4 text-sky-500 mt-0.5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m18 16 4-4-4-4"/><path d="m6 8-4 4 4 4"/><path d="m14.5 4-5 16"/></svg>
+              <span><strong class="text-slate-900 dark:text-white">freeCodeCamp Contributor:</strong> Contributed to developer curriculum modules, server configurations, and API routing.</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Education & Languages -->
+        <div class="spotlight-card rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-card p-6 space-y-4">
+          <div class="flex items-center gap-2 text-sky-600 dark:text-sky-400">
+            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z"/><path d="M22 10v6"/><path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5"/></svg>
+            <h2 class="text-lg font-bold text-slate-900 dark:text-white">Education &amp; Languages</h2>
+          </div>
+
+          <div class="space-y-4">
+            <div class="border-l-2 border-sky-500 pl-4">
+              <div class="font-bold text-sm text-slate-900 dark:text-white">Bachelor of Science (B.Sc.) in Computer Science</div>
+              <div class="text-xs text-sky-600 dark:text-sky-400 font-medium mt-0.5">KSD's Model College (Empowered Autonomous), University of Mumbai</div>
+              <div class="text-xs text-slate-500 dark:text-slate-400 mt-1">Pursuing | Coursework: Information &amp; Network Security, Cryptography, Operating Systems, Distributed Computing</div>
+            </div>
+
+            <div class="border-l-2 border-slate-300 dark:border-slate-700 pl-4">
+              <div class="font-bold text-sm text-slate-900 dark:text-white">Higher Secondary Certificate (12th Grade)</div>
+              <div class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">Model College, Dombivli, Maharashtra (Completed 2024)</div>
+            </div>
+
+            <div class="pt-2 border-t border-slate-200 dark:border-slate-800 flex flex-wrap items-center justify-between gap-2 text-xs">
+              <span class="font-semibold text-slate-700 dark:text-slate-300">Spoken Languages</span>
+              <div class="flex gap-1.5">
+                <span class="px-2.5 py-0.5 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">English</span>
+                <span class="px-2.5 py-0.5 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">Hindi</span>
+                <span class="px-2.5 py-0.5 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">Marathi</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section (OpSec-Hardened: No Scrapable Phone Number) -->
+    <section id="contact" class="py-12 border-t border-slate-200/80 dark:border-slate-800/80 reveal">
+      <div class="rounded-2xl border border-slate-200 dark:border-slate-800 bg-gradient-to-br from-white to-slate-100 dark:from-card dark:to-panel p-6 sm:p-8 flex flex-col md:flex-row md:items-center justify-between gap-6">
+        <div class="space-y-2 max-w-xl">
+          <h2 class="text-2xl font-bold text-slate-900 dark:text-white">Get in Touch</h2>
+          <p class="text-sm text-slate-600 dark:text-slate-300">
+            Open to cybersecurity, DevSecOps, and software engineering internships, project collaborations, and responsible security research.
+          </p>
+        </div>
+
+        <div class="flex flex-col sm:flex-row md:flex-col gap-2.5 shrink-0">
+          <button id="copy-email-footer" type="button" class="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-sm font-semibold bg-sky-600 hover:bg-sky-500 active:scale-[0.98] text-white transition-all">
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
+            <span id="footer-email-label">Copy Email Address</span>
+          </button>
+          <a href="https://github.com/steve25060" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-sm font-medium border border-slate-300 dark:border-slate-700 bg-white dark:bg-obsidian text-slate-800 dark:text-slate-200 hover:border-sky-500/70 transition-colors">
+            <svg class="w-4 h-4 text-sky-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
+            <span>github.com/steve25060</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <footer class="pt-6 border-t border-slate-200/80 dark:border-slate-800/80 flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-slate-500 dark:text-slate-400">
+      <div>&copy; 2026 Stavan Shamuvel Wadekar, Dombivli, Maharashtra</div>
+      <div class="font-mono">stavanwadekar.cv</div>
+    </footer>
+  </main>
+
+  <!-- Project Detail Modal -->
+  <div id="project-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title" class="hidden fixed inset-0 z-50 bg-slate-950/75 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="modal-panel w-full max-w-xl rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-panel shadow-2xl overflow-hidden">
+      <div class="px-6 py-4 border-b border-slate-200 dark:border-slate-800 flex items-start justify-between gap-4">
+        <div>
+          <span id="modal-category" class="font-mono text-[11px] uppercase tracking-wider text-sky-600 dark:text-sky-400"></span>
+          <h3 id="modal-title" class="text-lg font-bold text-slate-900 dark:text-white mt-0.5"></h3>
+        </div>
+        <button id="close-project-modal" type="button" aria-label="Close project details" class="p-1.5 rounded-lg text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800">
+          <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+        </button>
+      </div>
+      <div class="p-6 space-y-4">
+        <p id="modal-hook" class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed"></p>
+        <div>
+          <div class="text-xs font-mono uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-2">Key Highlights</div>
+          <ul id="modal-highlights" class="space-y-2 text-sm text-slate-700 dark:text-slate-200 list-disc pl-5"></ul>
+        </div>
+        <div>
+          <div class="text-xs font-mono uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-2">Tech Stack</div>
+          <div id="modal-stack" class="flex flex-wrap gap-1.5"></div>
+        </div>
+      </div>
+      <div class="px-6 py-3.5 bg-slate-50 dark:bg-obsidian/60 border-t border-slate-200 dark:border-slate-800 flex items-center justify-end gap-3">
+        <button id="close-project-modal-2" type="button" class="px-3.5 py-2 rounded-lg text-xs font-semibold text-slate-600 dark:text-slate-300 hover:bg-slate-200/70 dark:hover:bg-slate-800">Close</button>
+        <a id="modal-link" href="https://github.com/steve25060" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg text-xs font-semibold bg-sky-600 hover:bg-sky-500 text-white">
+          <span id="modal-link-label">View on GitHub</span>
+          <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Command Palette Modal (Ctrl+K) -->
+  <div id="cmd-modal" role="dialog" aria-modal="true" aria-label="Command palette" class="hidden fixed inset-0 z-50 bg-slate-950/75 backdrop-blur-sm flex items-start justify-center pt-20 p-4">
+    <div class="modal-panel w-full max-w-lg rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-panel shadow-2xl overflow-hidden">
+      <div class="px-4 py-3 border-b border-slate-200 dark:border-slate-800 flex items-center gap-3">
+        <svg class="w-4 h-4 text-slate-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+        <input id="cmd-input" type="text" aria-label="Search commands" placeholder="Jump to section, copy email, open GitHub..." class="w-full bg-transparent text-sm text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none" />
+        <button id="close-cmd-btn" type="button" class="font-mono text-[11px] px-1.5 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-slate-500">ESC</button>
+      </div>
+      <div id="cmd-list" role="listbox" class="p-2 max-h-72 overflow-y-auto space-y-1"></div>
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div id="toast" role="status" aria-live="polite" class="fixed bottom-5 right-5 z-50 translate-y-12 opacity-0 pointer-events-none transition-all duration-300 px-4 py-2.5 rounded-xl bg-slate-900 dark:bg-white text-white dark:text-slate-950 text-xs font-semibold shadow-xl flex items-center gap-2">
+    <svg class="w-4 h-4 text-emerald-400 dark:text-emerald-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
+    <span id="toast-msg">Copied to clipboard</span>
+  </div>
+
+  <script>
+    // Assemble contact email at runtime to deter basic HTML scrapers
+    const CONTACT_EMAIL = ['stavan794', 'gmail.com'].join('@');
+
+    const ICONS = {
+      shield: '<svg class="w-4 h-4 text-sky-500 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg>',
+      code: '<svg class="w-4 h-4 text-sky-500 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>',
+      cpu: '<svg class="w-4 h-4 text-sky-500 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="16" height="16" x="4" y="4" rx="2"/><rect width="6" height="6" x="9" y="9" rx="1"/><path d="M15 2v2"/><path d="M15 20v2"/><path d="M2 15h2"/><path d="M2 9h2"/><path d="M20 15h2"/><path d="M20 9h2"/><path d="M9 2v2"/><path d="M9 20v2"/></svg>',
+      cloud: '<svg class="w-4 h-4 text-sky-500 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"/></svg>',
+      arrowRight: '<svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>',
+      extLink: '<svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg>'
+    };
+
+    const PROJECTS = [
+      {
+        id: 'omniroute',
+        title: 'OmniRoute: Antigravity MITM Bridge',
+        badge: 'Merged PR #14006',
+        category: 'ai',
+        categoryLabel: 'Distributed Systems / AI Infrastructure',
+        hook: 'High-throughput local AI gateway and TLS MITM bridge enabling Google Antigravity IDE and CLI to route across 350+ LLM providers with automatic fallback and zero token leakage.',
+        highlights: [
+          'Reverse-engineered Antigravity proxy protocols; built custom root CA TLS interception, dynamic model catalog injection, and collision-free model list merging.',
+          'Developed streaming tool-call accumulators and upstream self-healing logic preventing quota exhaustion and agentic infinite retry loops.',
+          'Integrated RTK and Caveman token compression pipelines cutting bash and telemetry tokens by up to 90%.'
+        ],
+        stack: ['TypeScript', 'Node.js', 'Express', 'Open-SSE', 'TLS/MITM', 'Systemd', 'Vitest'],
+        url: 'https://github.com/diegosouzapw/OmniRoute/pull/14006',
+        linkLabel: 'View Merged PR #14006'
+      },
+      {
+        id: 'securelens',
+        title: 'SecureLens: Enterprise DAST/SAST Platform',
+        badge: '19 Engines',
+        category: 'security',
+        categoryLabel: 'Cybersecurity / DevSecOps',
+        hook: 'Full-stack AI-augmented vulnerability scanner and posture management platform unifying 19 open-source security engines with multi-LLM automated remediation.',
+        highlights: [
+          'Orchestrates 19 security engines (Nuclei, OWASP ZAP, Nmap, TestSSL, Subfinder, HTTPX, Gitleaks, Semgrep) across web surfaces and Git repositories.',
+          'Built a multi-provider AI remediation copilot (Gemini, Groq, OpenRouter, OpenAI, Ollama) generating ready-to-merge code diff patches.',
+          'Production monorepo featuring BullMQ background scan queues, 0-100 risk scoring gauge, and PDF/HTML/JSON/CSV report exports.'
+        ],
+        stack: ['Next.js 16', 'React 19', 'NestJS', 'PostgreSQL', 'Prisma', 'Redis / BullMQ', 'Docker'],
+        url: 'https://github.com/steve25060/SecureLens-Production',
+        linkLabel: 'View GitHub Repo'
+      },
+      {
+        id: 'brandaudit',
+        title: 'BrandAudit AI: Diagnostic Hardening Platform',
+        badge: 'Edge AI',
+        category: 'ai',
+        categoryLabel: 'AI Engineering / Cloudflare Edge',
+        hook: 'Evidence-grounded 8-stage diagnostic platform that interrogates startup assumptions, stress-tests adversarial weaknesses, and prevents AI hallucination drift.',
+        highlights: [
+          'Implemented the "Decision Drift Radar" qualitatively validating evolving brand strategies against initial founder interview evidence.',
+          'Structured 8-stage workflow: 4-question adaptive intake interview, Problem MRI, divergent Strategy Futures, and Adversarial Audit with decision memory.',
+          'High-speed edge backend powered by Hono on Cloudflare Workers calling the Google GenAI Gemini SDK.'
+        ],
+        stack: ['TypeScript', 'React 19', 'Vite', 'Tailwind CSS', 'Hono', 'Cloudflare Workers', '@google/genai'],
+        url: 'https://github.com/steve25060/BrandAudit',
+        linkLabel: 'View GitHub Repo'
+      },
+      {
+        id: 'securesaathi',
+        title: 'SecureSaathi: Vernacular Cyber Safety App',
+        badge: '4 Languages',
+        category: 'security',
+        categoryLabel: 'Cybersecurity / Mobile App',
+        hook: 'Vernacular-first mobile cyber safety companion protecting citizens against digital arrest scams, malicious APKs, fake utility notices, and UPI fraud.',
+        highlights: [
+          'Universal multi-vector threat scanner for suspicious SMS text, phishing URLs, fake payment QR codes, caller impersonation scripts, and sideloaded APKs.',
+          'Plain-language breakdowns ("What Happened" & "What Should I Do") with TTS audio read-aloud across English, Hindi, Marathi, and Gujarati.',
+          'Direct emergency lockdown checklists and one-touch reporting for India’s National Cyber Crime Helpline (1930) and cybercrime.gov.in.'
+        ],
+        stack: ['React Native (Expo)', 'TypeScript', 'React Native Web', 'expo-speech (TTS)'],
+        url: 'https://github.com/steve25060/SecureSaathi',
+        linkLabel: 'View GitHub Repo'
+      },
+      {
+        id: 'vibeguard',
+        title: 'VibeGuard AI: Autonomous Website QA Engine',
+        badge: 'Private CLI',
+        category: 'apps',
+        categoryLabel: 'CLI Automation / QA Testing',
+        hook: 'Autonomous website quality assurance and scoped repair engine executing visual, functional, and regression diagnostics directly from the command line.',
+        highlights: [
+          'Modular CLI architecture with built-in doctor health diagnostics, automated screenshot evidence collection, and regression suites.',
+          'Node.js native execution with zero-transpile type stripping, SQLite state persistence, and real-time dashboard telemetry.'
+        ],
+        stack: ['TypeScript', 'Node.js', 'SQLite', 'Puppeteer / Playwright', 'CLI'],
+        url: `mailto:${CONTACT_EMAIL}?subject=Technical%20Review%20Request%20-%20VibeGuard%20AI`,
+        linkLabel: 'Request Technical Review'
+      }
+    ];
+
+    const SKILLS = [
+      {
+        group: 'Cybersecurity & VAPT',
+        icon: 'shield',
+        items: ['Burp Suite Pro', 'OWASP Top 10', 'Nmap', 'Amass', 'Subfinder', 'ffuf', 'Gobuster', 'Nuclei', 'SQLMap', 'Nikto', 'Wapiti', 'Metasploit', 'Sn1per', 'OWASP ZAP', 'HTTPX', 'Katana', 'Semgrep', 'Gitleaks', 'TestSSL', 'TLS/MITM Interception', 'Custom Root CA', 'Linux Hardening']
+      },
+      {
+        group: 'Languages',
+        icon: 'code',
+        items: ['TypeScript', 'JavaScript (ESNext)', 'Python 3', 'Java (J2EE)', 'C', 'C++', 'SQL', 'Bash / Shell Scripting', 'HTML5', 'CSS3']
+      },
+      {
+        group: 'Frameworks & Databases',
+        icon: 'cpu',
+        items: ['React 19', 'Next.js 16', 'React Native (Expo)', 'NestJS', 'Express.js', 'Hono', 'Node.js', 'Socket.IO', 'Tailwind CSS', 'PostgreSQL', 'Prisma ORM', 'Redis (BullMQ)', 'MySQL', 'SQLite3']
+      },
+      {
+        group: 'Cloud, AI & DevOps',
+        icon: 'cloud',
+        items: ['Docker', 'Docker Compose', 'Cloudflare Workers', 'Wrangler', 'Linux (Kali / Ubuntu / Debian)', 'Git & GitHub Actions', 'Turborepo', 'Systemd', 'Google GenAI SDK', 'Multi-LLM Failover']
+      }
+    ];
+
+    const COMMANDS = [
+      { label: 'Jump to Experience & Leadership', hint: '#experience', action: () => scrollToSection('#experience') },
+      { label: 'Jump to Projects & Open Source', hint: '#projects', action: () => scrollToSection('#projects') },
+      { label: 'Jump to Technical Skills', hint: '#skills', action: () => scrollToSection('#skills') },
+      { label: 'Jump to Research & Education', hint: '#publications', action: () => scrollToSection('#publications') },
+      { label: 'Copy Email Address', hint: 'Copy', action: () => copyText(CONTACT_EMAIL, 'Email copied!') },
+      { label: 'Copy Zenodo Paper DOI', hint: 'Copy', action: () => copyText('https://doi.org/10.5281/zenodo.18638145', 'Zenodo DOI copied!') },
+      { label: 'Open GitHub Profile (steve25060)', hint: 'External', action: () => window.open('https://github.com/steve25060', '_blank', 'noopener,noreferrer') },
+      { label: 'Print / Save CV as PDF', hint: 'PDF', action: () => window.print() },
+      { label: 'Toggle Dark / Light Theme', hint: 'Theme', action: () => toggleTheme() }
+    ];
+
+    // Strict HTML Escaping Helper (Zero-XSS Defense)
+    function escapeHtml(str) {
+      return String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;');
+    }
+
+    // Toast & Clipboard
+    let toastTimer = null;
+    function showToast(message) {
+      const toast = document.getElementById('toast');
+      document.getElementById('toast-msg').textContent = message;
+      toast.classList.remove('translate-y-12', 'opacity-0');
+      toast.classList.add('translate-y-0', 'opacity-100');
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => {
+        toast.classList.add('translate-y-12', 'opacity-0');
+        toast.classList.remove('translate-y-0', 'opacity-100');
+      }, 2200);
+    }
+
+    function copyText(text, successMsg) {
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(() => showToast(successMsg)).catch(() => fallbackCopy(text, successMsg));
+      } else {
+        fallbackCopy(text, successMsg);
+      }
+    }
+
+    function fallbackCopy(text, successMsg) {
+      const ta = document.createElement('textarea');
+      ta.value = text;
+      ta.style.position = 'fixed';
+      ta.style.opacity = '0';
+      document.body.appendChild(ta);
+      ta.select();
+      try {
+        document.execCommand('copy');
+        showToast(successMsg);
+      } catch (e) {
+        showToast('Copy failed. Please copy manually.');
+      }
+      document.body.removeChild(ta);
+    }
+
+    function scrollToSection(selector) {
+      const el = document.querySelector(selector);
+      if (el) el.scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function toggleTheme() {
+      const isDark = document.documentElement.classList.toggle('dark');
+      try {
+        localStorage.setItem('stavan_cv_theme', isDark ? 'dark' : 'light');
+      } catch (e) {}
+      showToast(isDark ? 'Switched to Dark mode' : 'Switched to Light mode');
+    }
+
+    // Body Scroll Lock Management
+    function syncBodyScrollLock() {
+      const projOpen = !document.getElementById('project-modal').classList.contains('hidden');
+      const cmdOpen = !document.getElementById('cmd-modal').classList.contains('hidden');
+      document.body.classList.toggle('overflow-hidden', projOpen || cmdOpen);
+    }
+
+    // Spotlight Cursor Glow on Cards
+    function attachSpotlights(root = document) {
+      root.querySelectorAll('.spotlight-card').forEach(card => {
+        if (card.dataset.spotlightBound) return;
+        card.dataset.spotlightBound = '1';
+        card.addEventListener('mousemove', (e) => {
+          const rect = card.getBoundingClientRect();
+          card.style.setProperty('--mx', `${e.clientX - rect.left}px`);
+          card.style.setProperty('--my', `${e.clientY - rect.top}px`);
+        });
+      });
+    }
+
+    // Animated Count-Up Metrics (Triggered When Visible via IntersectionObserver)
+    let countersRan = false;
+    function animateCounters() {
+      if (countersRan) return;
+      countersRan = true;
+      const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      document.querySelectorAll('.count-up').forEach(el => {
+        const target = Number(el.dataset.target || 0);
+        const suffix = el.dataset.suffix || '';
+        if (reduced || !target) {
+          el.textContent = `${target}${suffix}`;
+          return;
+        }
+        const duration = 900;
+        const start = performance.now();
+        function step(now) {
+          const progress = Math.min((now - start) / duration, 1);
+          const eased = 1 - Math.pow(1 - progress, 3);
+          el.textContent = `${Math.round(eased * target)}${suffix}`;
+          if (progress < 1) requestAnimationFrame(step);
+        }
+        requestAnimationFrame(step);
+      });
+    }
+
+    // Live Terminal Intro Typing Animation
+    function runTerminalIntro() {
+      const out = document.getElementById('term-output');
+      const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const introLines = [
+        { type: 'cmd', text: 'whoami' },
+        { type: 'out', text: 'Stavan Shamuvel Wadekar | CS Undergrad & Security Engineer', cls: 'text-slate-200' },
+        { type: 'cmd', text: 'cat highlights.txt' },
+        { type: 'out', text: '[+] Merged Upstream PR #14006 (OmniRoute MITM Proxy)', cls: 'text-sky-300' },
+        { type: 'out', text: '[+] Built SecureLens (19 DAST/SAST engines + AI diffs)', cls: 'text-sky-300' },
+        { type: 'out', text: '[+] Uptoskills VAPT Intern (Burp Pro, Nmap, Nuclei, Amass)', cls: 'text-sky-300' },
+        { type: 'out', text: '[+] Published Paper: doi.org/10.5281/zenodo.18638145', cls: 'text-emerald-300' }
+      ];
+
+      function appendPrompt(cmdText, withCursor = false) {
+        const line = document.createElement('div');
+        const userSpan = document.createElement('span');
+        userSpan.className = 'text-emerald-400';
+        userSpan.textContent = 'stavan@cv';
+        const colonNode = document.createTextNode(':');
+        const dirSpan = document.createElement('span');
+        dirSpan.className = 'text-sky-400';
+        dirSpan.textContent = '~';
+        const cmdSpan = document.createElement('span');
+        cmdSpan.textContent = `$ ${cmdText}`;
+        line.append(userSpan, colonNode, dirSpan, cmdSpan);
+        if (withCursor) {
+          const cur = document.createElement('span');
+          cur.className = 'term-cursor';
+          line.appendChild(cur);
+        }
+        out.appendChild(line);
+        return { line, cmdSpan };
+      }
+
+      if (reduced) {
+        introLines.forEach(item => {
+          if (item.type === 'cmd') {
+            appendPrompt(item.text);
+          } else {
+            const div = document.createElement('div');
+            div.className = item.cls;
+            div.textContent = item.text;
+            out.appendChild(div);
+          }
+        });
+        return;
+      }
+
+      let idx = 0;
+      function nextLine() {
+        if (idx >= introLines.length) {
+          appendPrompt('', true);
+          out.scrollTop = out.scrollHeight;
+          return;
+        }
+        const item = introLines[idx++];
+        if (item.type === 'cmd') {
+          const { line, cmdSpan } = appendPrompt('', true);
+          let c = 0;
+          const timer = setInterval(() => {
+            c++;
+            cmdSpan.textContent = `$ ${item.text.slice(0, c)}`;
+            out.scrollTop = out.scrollHeight;
+            if (c >= item.text.length) {
+              clearInterval(timer);
+              const cur = line.querySelector('.term-cursor');
+              if (cur) cur.remove();
+              setTimeout(nextLine, 140);
+            }
+          }, 36);
+        } else {
+          const div = document.createElement('div');
+          div.className = item.cls;
+          div.textContent = item.text;
+          out.appendChild(div);
+          out.scrollTop = out.scrollHeight;
+          setTimeout(nextLine, 110);
+        }
+      }
+      nextLine();
+    }
+
+    // Focus Trap Helper for Accessible Modals
+    let lastFocusedEl = null;
+    function trapFocus(modalEl, e) {
+      if (e.key !== 'Tab') return;
+      const focusables = modalEl.querySelectorAll('a[href], button:not([disabled]), input:not([disabled]), [tabindex]:not([tabindex="-1"])');
+      if (!focusables.length) return;
+      const first = focusables[0];
+      const last = focusables[focusables.length - 1];
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
+      }
+    }
+
+    // Render Projects (Includes hidden print:block full highlights for complete PDF export)
+    let activeFilter = 'all';
+    function renderProjects(forceAll = false) {
+      const grid = document.getElementById('projects-grid');
+      const filtered = (forceAll || activeFilter === 'all') ? PROJECTS : PROJECTS.filter(p => p.category === activeFilter);
+      grid.innerHTML = filtered.map((p, i) => {
+        const isMailto = p.url.startsWith('mailto:');
+        const linkAttrs = isMailto ? '' : 'target="_blank" rel="noopener noreferrer"';
+        return `
+        <article style="animation: heroFadeUp 0.4s cubic-bezier(0.22, 1, 0.36, 1) ${i * 60}ms both;" class="spotlight-card rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-card p-5 flex flex-col justify-between gap-4 hover:border-sky-500/60 hover:shadow-lg dark:hover:shadow-sky-950/30">
+          <div class="space-y-2.5">
+            <div class="flex items-center justify-between gap-2">
+              <span class="font-mono text-[11px] text-sky-600 dark:text-sky-400">${escapeHtml(p.categoryLabel)}</span>
+              <span class="font-mono text-[11px] px-2 py-0.5 rounded-md bg-emerald-500/10 text-emerald-700 dark:text-emerald-300 border border-emerald-500/20 shrink-0">${escapeHtml(p.badge)}</span>
+            </div>
+            <h3 class="text-base sm:text-lg font-bold text-slate-900 dark:text-white leading-snug">${escapeHtml(p.title)}</h3>
+            <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">${escapeHtml(p.hook)}</p>
+            <ul class="hidden print:block mt-2 space-y-1 text-xs text-slate-700 list-disc pl-4">
+              ${p.highlights.map(h => `<li>${escapeHtml(h)}</li>`).join('')}
+            </ul>
+          </div>
+          <div class="space-y-3 pt-2 border-t border-slate-100 dark:border-slate-800/80">
+            <div class="flex flex-wrap gap-1.5">
+              ${p.stack.slice(0, 5).map(t => `<span class="px-2 py-0.5 rounded font-mono text-[11px] bg-slate-100 dark:bg-slate-800/90 text-slate-600 dark:text-slate-300">${escapeHtml(t)}</span>`).join('')}
+            </div>
+            <div class="flex items-center justify-between gap-2 pt-1 no-print">
+              <button type="button" data-project-id="${escapeHtml(p.id)}" class="open-proj-btn inline-flex items-center gap-1 text-xs font-semibold text-sky-600 dark:text-sky-400 hover:underline">
+                <span>Inspect Architecture</span>
+                ${ICONS.arrowRight}
+              </button>
+              <a href="${escapeHtml(p.url)}" ${linkAttrs} class="inline-flex items-center gap-1 text-xs font-medium text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white">
+                <span>${p.id === 'vibeguard' ? 'Request' : 'Source'}</span>
+                ${ICONS.extLink}
+              </a>
+            </div>
+          </div>
+        </article>
+      `;
+      }).join('');
+
+      grid.querySelectorAll('.open-proj-btn').forEach(btn => {
+        btn.addEventListener('click', () => openProjectModal(btn.dataset.projectId));
+      });
+      attachSpotlights(grid);
+    }
+
+    function openProjectModal(id) {
+      const proj = PROJECTS.find(p => p.id === id);
+      if (!proj) return;
+      lastFocusedEl = document.activeElement;
+      document.getElementById('modal-category').textContent = proj.categoryLabel;
+      document.getElementById('modal-title').textContent = proj.title;
+      document.getElementById('modal-hook').textContent = proj.hook;
+
+      const hlList = document.getElementById('modal-highlights');
+      hlList.textContent = '';
+      proj.highlights.forEach(h => {
+        const li = document.createElement('li');
+        li.textContent = h;
+        hlList.appendChild(li);
+      });
+
+      const stackWrap = document.getElementById('modal-stack');
+      stackWrap.textContent = '';
+      proj.stack.forEach(s => {
+        const span = document.createElement('span');
+        span.className = 'px-2.5 py-1 rounded-md font-mono text-xs bg-sky-500/10 text-sky-700 dark:text-sky-300 border border-sky-500/20';
+        span.textContent = s;
+        stackWrap.appendChild(span);
+      });
+
+      const link = document.getElementById('modal-link');
+      link.href = proj.url;
+      if (proj.url.startsWith('mailto:')) {
+        link.removeAttribute('target');
+        link.removeAttribute('rel');
+      } else {
+        link.setAttribute('target', '_blank');
+        link.setAttribute('rel', 'noopener noreferrer');
+      }
+      document.getElementById('modal-link-label').textContent = proj.linkLabel;
+
+      const modal = document.getElementById('project-modal');
+      modal.classList.remove('hidden');
+      syncBodyScrollLock();
+      document.getElementById('close-project-modal').focus();
+    }
+
+    function closeProjectModal() {
+      const modal = document.getElementById('project-modal');
+      if (!modal.classList.contains('hidden')) {
+        modal.classList.add('hidden');
+        syncBodyScrollLock();
+        if (lastFocusedEl && typeof lastFocusedEl.focus === 'function') lastFocusedEl.focus();
+      }
+    }
+
+    // Render Skills (XSS-Safe via DOM nodes & escapeHtml)
+    function renderSkills(query = '') {
+      const container = document.getElementById('skills-container');
+      const q = query.trim().toLowerCase();
+      const blocks = SKILLS.map(cat => {
+        const matched = q ? cat.items.filter(i => i.toLowerCase().includes(q)) : cat.items;
+        if (q && matched.length === 0) return '';
+        return `
+          <div class="spotlight-card rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-card p-5">
+            <div class="flex items-center gap-2 mb-3">
+              ${ICONS[cat.icon] || ''}
+              <h3 class="text-sm font-bold text-slate-900 dark:text-white">${escapeHtml(cat.group)}</h3>
+            </div>
+            <div class="flex flex-wrap gap-1.5">
+              ${matched.map(item => `
+                <span class="px-2.5 py-1 rounded-lg font-mono text-xs border ${q ? 'border-sky-500/50 bg-sky-500/15 text-sky-700 dark:text-sky-300' : 'border-slate-200 dark:border-slate-700/80 bg-slate-50 dark:bg-panel text-slate-700 dark:text-slate-300'}">${escapeHtml(item)}</span>
+              `).join('')}
+            </div>
+          </div>
+        `;
+      }).filter(Boolean);
+
+      if (blocks.length > 0) {
+        container.innerHTML = blocks.join('');
+        attachSpotlights(container);
+      } else {
+        container.textContent = '';
+        const empty = document.createElement('div');
+        empty.className = 'md:col-span-2 text-center py-8 text-sm text-slate-500';
+        empty.textContent = `No matching skills found for "${query}".`;
+        container.appendChild(empty);
+      }
+    }
+
+    // Interactive Terminal (100% XSS-Safe via createElement + textContent)
+    function runTerminalCmd(raw) {
+      const cmd = raw.trim();
+      const normalized = cmd.toLowerCase();
+      const out = document.getElementById('term-output');
+      if (!normalized) return;
+
+      out.querySelectorAll('.term-cursor').forEach(c => c.remove());
+
+      if (normalized === 'clear') {
+        out.textContent = '';
+        const cleared = document.createElement('div');
+        cleared.className = 'text-slate-500';
+        cleared.textContent = 'Terminal cleared. Type "help" for available commands.';
+        out.appendChild(cleared);
+        return;
+      }
+
+      const responses = {
+        help: 'Commands: whoami, skills, projects, experience, contact, clear',
+        whoami: 'Stavan Shamuvel Wadekar | B.Sc. CS Student at KSD Model College | Cybersecurity, DevSecOps & AI Systems',
+        skills: 'VAPT: Burp Pro, Nmap, Amass, Nuclei, ffuf, SQLMap, Metasploit | Dev: TypeScript, Python, Java, Next.js, NestJS, Docker',
+        projects: '1. OmniRoute (PR #14006)  2. SecureLens (19 engines)  3. BrandAudit AI  4. SecureSaathi  5. VibeGuard AI',
+        experience: "Cybersecurity Intern at Uptoskills (Apr-Jul 2026) | Student Coordinator, Bits 'N' Bytes Committee (e-Logik'26)",
+        contact: `Email: ${CONTACT_EMAIL} | GitHub: github.com/steve25060 | Web: stavanwadekar.cv`
+      };
+
+      const replyText = responses[normalized] || `zsh: command not found: ${cmd}. Try: help, whoami, skills, projects, contact`;
+
+      const block = document.createElement('div');
+      block.className = 'space-y-1';
+
+      const promptLine = document.createElement('div');
+      const userSpan = document.createElement('span');
+      userSpan.className = 'text-emerald-400';
+      userSpan.textContent = 'stavan@cv';
+      const colonNode = document.createTextNode(':');
+      const dirSpan = document.createElement('span');
+      dirSpan.className = 'text-sky-400';
+      dirSpan.textContent = '~';
+      const cmdNode = document.createTextNode(`$ ${cmd}`);
+      promptLine.append(userSpan, colonNode, dirSpan, cmdNode);
+
+      const replyLine = document.createElement('div');
+      replyLine.className = 'text-sky-300';
+      replyLine.textContent = replyText;
+
+      block.append(promptLine, replyLine);
+      out.appendChild(block);
+      out.scrollTop = out.scrollHeight;
+    }
+
+    // Command Palette with Full Arrow-Key & Enter Navigation
+    let filteredCmds = [...COMMANDS];
+    let selectedCmdIdx = 0;
+
+    function renderCmdList(filter = '') {
+      const list = document.getElementById('cmd-list');
+      const q = filter.trim().toLowerCase();
+      filteredCmds = COMMANDS.filter(c => c.label.toLowerCase().includes(q) || c.hint.toLowerCase().includes(q));
+      if (selectedCmdIdx >= filteredCmds.length) selectedCmdIdx = 0;
+
+      list.textContent = '';
+      if (!filteredCmds.length) {
+        const empty = document.createElement('div');
+        empty.className = 'p-4 text-center text-xs text-slate-500';
+        empty.textContent = 'No matching commands';
+        list.appendChild(empty);
+        return;
+      }
+
+      filteredCmds.forEach((c, idx) => {
+        const isActive = idx === selectedCmdIdx;
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.setAttribute('role', 'option');
+        btn.setAttribute('aria-selected', String(isActive));
+        btn.className = `cmd-item w-full px-3 py-2.5 rounded-xl flex items-center justify-between text-left text-sm transition-colors ${
+          isActive
+            ? 'bg-sky-500/15 text-sky-600 dark:text-sky-300 font-medium'
+            : 'text-slate-700 dark:text-slate-200 hover:bg-sky-500/10 hover:text-sky-600 dark:hover:text-sky-300'
+        }`;
+
+        const labelSpan = document.createElement('span');
+        labelSpan.textContent = c.label;
+        const hintSpan = document.createElement('span');
+        hintSpan.className = 'font-mono text-[11px] text-slate-400';
+        hintSpan.textContent = c.hint;
+
+        btn.append(labelSpan, hintSpan);
+        btn.addEventListener('mouseenter', () => {
+          selectedCmdIdx = idx;
+          updateCmdSelection();
+        });
+        btn.addEventListener('click', () => executeSelectedCmd(idx));
+        list.appendChild(btn);
+      });
+    }
+
+    function updateCmdSelection() {
+      const items = document.querySelectorAll('#cmd-list .cmd-item');
+      items.forEach((btn, idx) => {
+        const isActive = idx === selectedCmdIdx;
+        btn.setAttribute('aria-selected', String(isActive));
+        btn.className = `cmd-item w-full px-3 py-2.5 rounded-xl flex items-center justify-between text-left text-sm transition-colors ${
+          isActive
+            ? 'bg-sky-500/15 text-sky-600 dark:text-sky-300 font-medium'
+            : 'text-slate-700 dark:text-slate-200 hover:bg-sky-500/10 hover:text-sky-600 dark:hover:text-sky-300'
+        }`;
+        if (isActive) btn.scrollIntoView({ block: 'nearest' });
+      });
+    }
+
+    function executeSelectedCmd(idx) {
+      const target = filteredCmds[idx];
+      if (!target) return;
+      closeCmdModal();
+      target.action();
+    }
+
+    function openCmdModal() {
+      lastFocusedEl = document.activeElement;
+      const modal = document.getElementById('cmd-modal');
+      modal.classList.remove('hidden');
+      syncBodyScrollLock();
+      const input = document.getElementById('cmd-input');
+      input.value = '';
+      selectedCmdIdx = 0;
+      renderCmdList('');
+      setTimeout(() => input.focus(), 20);
+    }
+
+    function closeCmdModal() {
+      const modal = document.getElementById('cmd-modal');
+      if (!modal.classList.contains('hidden')) {
+        modal.classList.add('hidden');
+        syncBodyScrollLock();
+        if (lastFocusedEl && typeof lastFocusedEl.focus === 'function') lastFocusedEl.focus();
+      }
+    }
+
+    // Init
+    document.addEventListener('DOMContentLoaded', () => {
+      document.getElementById('footer-email-label').textContent = CONTACT_EMAIL;
+      renderProjects();
+      renderSkills();
+      attachSpotlights();
+      runTerminalIntro();
+
+      // Trigger counter animations only when metrics strip enters viewport
+      const metricsEl = document.getElementById('metrics-strip');
+      if (metricsEl) {
+        const metricsObserver = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              animateCounters();
+              metricsObserver.disconnect();
+            }
+          });
+        }, { threshold: 0.25 });
+        metricsObserver.observe(metricsEl);
+      }
+
+      // Ensure ALL projects + highlights print cleanly even if a filter is active
+      window.addEventListener('beforeprint', () => renderProjects(true));
+      window.addEventListener('afterprint', () => renderProjects(false));
+
+      // Scroll progress bar & active nav tracking
+      const progressBar = document.getElementById('scroll-progress');
+      const sections = ['experience', 'projects', 'skills', 'publications', 'contact']
+        .map(id => document.getElementById(id))
+        .filter(Boolean);
+      const navLinks = document.querySelectorAll('.nav-link');
+
+      window.addEventListener('scroll', () => {
+        const docH = document.documentElement.scrollHeight - window.innerHeight;
+        const pct = docH > 0 ? Math.min((window.scrollY / docH) * 100, 100) : 0;
+        progressBar.style.width = `${pct}%`;
+
+        let currentId = '';
+        sections.forEach(sec => {
+          if (window.scrollY >= sec.offsetTop - 140) currentId = sec.id;
+        });
+        navLinks.forEach(link => {
+          link.classList.toggle('active-nav', link.getAttribute('href') === `#${currentId}`);
+        });
+      }, { passive: true });
+
+      // Scroll reveal
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.08 });
+      document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+      // Navigation & Theme
+      document.getElementById('theme-toggle').addEventListener('click', toggleTheme);
+      document.getElementById('print-cv-btn').addEventListener('click', () => window.print());
+      document.getElementById('mobile-print-btn').addEventListener('click', () => window.print());
+
+      const mobileBtn = document.getElementById('mobile-menu-btn');
+      const mobileMenu = document.getElementById('mobile-menu');
+      mobileBtn.addEventListener('click', () => {
+        const isHidden = mobileMenu.classList.toggle('hidden');
+        mobileBtn.setAttribute('aria-expanded', String(!isHidden));
+      });
+      mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
+        mobileBtn.setAttribute('aria-expanded', 'false');
+      }));
+
+      // Copy buttons
+      document.getElementById('copy-email-hero').addEventListener('click', () => copyText(CONTACT_EMAIL, `Email copied: ${CONTACT_EMAIL}`));
+      document.getElementById('copy-email-footer').addEventListener('click', () => copyText(CONTACT_EMAIL, `Email copied: ${CONTACT_EMAIL}`));
+      document.getElementById('copy-doi-btn').addEventListener('click', () => copyText('https://doi.org/10.5281/zenodo.18638145', 'Zenodo DOI copied!'));
+
+      // Project filter pills
+      document.querySelectorAll('.proj-filter').forEach(btn => {
+        btn.addEventListener('click', () => {
+          activeFilter = btn.dataset.filter;
+          document.querySelectorAll('.proj-filter').forEach(b => {
+            b.className = 'proj-filter px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-200/80 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:text-sky-500 transition-colors';
+          });
+          btn.className = 'proj-filter active px-3 py-1.5 rounded-lg text-xs font-semibold bg-sky-600 text-white transition-colors';
+          renderProjects();
+        });
+      });
+
+      // Skill filter input
+      document.getElementById('skill-search').addEventListener('input', (e) => renderSkills(e.target.value));
+
+      // Terminal form & chips
+      document.getElementById('term-form').addEventListener('submit', (e) => {
+        e.preventDefault();
+        const input = document.getElementById('term-input');
+        runTerminalCmd(input.value);
+        input.value = '';
+      });
+      document.querySelectorAll('.term-chip').forEach(chip => {
+        chip.addEventListener('click', () => runTerminalCmd(chip.dataset.cmd));
+      });
+
+      // Project Modal listeners & focus trap
+      const projModal = document.getElementById('project-modal');
+      document.getElementById('close-project-modal').addEventListener('click', closeProjectModal);
+      document.getElementById('close-project-modal-2').addEventListener('click', closeProjectModal);
+      projModal.addEventListener('click', (e) => {
+        if (e.target.id === 'project-modal') closeProjectModal();
+      });
+      projModal.addEventListener('keydown', (e) => trapFocus(projModal, e));
+
+      // Command Palette listeners, arrow-key nav & focus trap
+      const cmdModal = document.getElementById('cmd-modal');
+      const cmdInput = document.getElementById('cmd-input');
+      document.getElementById('open-cmd-btn').addEventListener('click', openCmdModal);
+      document.getElementById('close-cmd-btn').addEventListener('click', closeCmdModal);
+      cmdInput.addEventListener('input', (e) => {
+        selectedCmdIdx = 0;
+        renderCmdList(e.target.value);
+      });
+      cmdInput.addEventListener('keydown', (e) => {
+        if (!filteredCmds.length) return;
+        if (e.key === 'ArrowDown') {
+          e.preventDefault();
+          selectedCmdIdx = (selectedCmdIdx + 1) % filteredCmds.length;
+          updateCmdSelection();
+        } else if (e.key === 'ArrowUp') {
+          e.preventDefault();
+          selectedCmdIdx = (selectedCmdIdx - 1 + filteredCmds.length) % filteredCmds.length;
+          updateCmdSelection();
+        } else if (e.key === 'Enter') {
+          e.preventDefault();
+          executeSelectedCmd(selectedCmdIdx);
+        }
+      });
+      cmdModal.addEventListener('click', (e) => {
+        if (e.target.id === 'cmd-modal') closeCmdModal();
+      });
+      cmdModal.addEventListener('keydown', (e) => trapFocus(cmdModal, e));
+
+      // Global shortcuts
+      document.addEventListener('keydown', (e) => {
+        if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') {
+          e.preventDefault();
+          openCmdModal();
+        } else if (e.key === 'Escape') {
+          closeCmdModal();
+          closeProjectModal();
+        }
+      });
+    });
+  </script>
+</body>
+</html>
