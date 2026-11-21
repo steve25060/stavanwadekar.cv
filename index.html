@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="dark scroll-smooth">
+<html lang="en" class="scroll-smooth">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -27,11 +27,13 @@
   <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png" />
   <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
 
-  <!-- Prevent Light-Mode Flash (FOUC) Before First Paint -->
+  <!-- Theme Initialization: Default to Light Mode unless Dark is explicitly saved -->
   <script>
     (function () {
       try {
-        if (localStorage.getItem('stavan_cv_theme') === 'light') {
+        if (localStorage.getItem('stavan_cv_theme') === 'dark') {
+          document.documentElement.classList.add('dark');
+        } else {
           document.documentElement.classList.remove('dark');
         }
       } catch (e) {}
@@ -64,10 +66,10 @@
   </script>
   <style>
     :root {
-      color-scheme: dark;
-    }
-    html:not(.dark) {
       color-scheme: light;
+    }
+    html.dark {
+      color-scheme: dark;
     }
     .bg-grid-dark {
       background-image: radial-gradient(rgba(56, 189, 248, 0.11) 1px, transparent 1px);
