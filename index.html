@@ -12,12 +12,20 @@
   <meta property="og:url" content="https://stavanwadekar.cv/" />
   <meta property="og:title" content="Stavan Wadekar | Software Engineer &amp; Cybersecurity" />
   <meta property="og:description" content="Security scanners, TLS MITM proxy bridges, authorized VAPT work, merged open-source PR #14006, and published Zenodo research." />
-  <meta name="twitter:card" content="summary" />
+  <meta property="og:image" content="https://stavanwadekar.cv/assets/og-image.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="1200" />
+  <meta property="og:image:alt" content="Stavan Wadekar" />
+  <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Stavan Wadekar | Software Engineer &amp; Cybersecurity" />
   <meta name="twitter:description" content="Interactive CV and technical portfolio of Stavan Wadekar (stavanwadekar.cv)." />
+  <meta name="twitter:image" content="https://stavanwadekar.cv/assets/og-image.jpg" />
 
-  <!-- Inline SVG Monogram Favicon (Zero External Requests) -->
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23070b14'/%3E%3Crect x='2' y='2' width='60' height='60' rx='12' fill='none' stroke='%230ea5e9' stroke-width='3'/%3E%3Ctext x='32' y='41' text-anchor='middle' font-family='monospace' font-size='26' font-weight='700' fill='%23f8fafc'%3ESW%3C/text%3E%3C/svg%3E" />
+  <!-- Favicon & Device Icons -->
+  <link rel="icon" type="image/x-icon" href="favicon.ico" />
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
 
   <!-- Prevent Light-Mode Flash (FOUC) Before First Paint -->
   <script>
@@ -242,8 +250,11 @@
   <!-- Sticky Navigation -->
   <header class="sticky top-0 z-40 border-b border-slate-200/80 dark:border-slate-800/80 bg-white/80 dark:bg-obsidian/80 glass-nav">
     <div class="max-w-5xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between gap-3">
-      <a href="#top" class="flex items-center gap-2.5 font-mono text-sm font-semibold tracking-tight text-slate-900 dark:text-white shrink-0">
-        <span class="w-2 h-2 rounded-full bg-emerald-400 live-dot"></span>
+      <a href="#top" class="flex items-center gap-2.5 font-mono text-sm font-semibold tracking-tight text-slate-900 dark:text-white shrink-0 group">
+        <div class="relative shrink-0">
+          <img src="assets/favicon-32x32.png" alt="Stavan Wadekar" class="w-7 h-7 rounded-full object-cover ring-2 ring-sky-500/40 group-hover:ring-sky-400 transition-all shadow-sm" />
+          <span class="absolute -bottom-0.5 -right-0.5 w-2 h-2 rounded-full bg-emerald-400 border border-white dark:border-obsidian live-dot"></span>
+        </div>
         <span>stavanwadekar<span class="text-sky-500">.cv</span></span>
       </a>
 
@@ -299,18 +310,27 @@
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
         <!-- Left Intro -->
         <div class="lg:col-span-7 space-y-5 hero-stagger">
-          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-medium border border-emerald-500/30 bg-emerald-500/10 text-emerald-700 dark:text-emerald-300">
-            <span class="w-2 h-2 rounded-full bg-emerald-400 live-dot"></span>
-            <span>Open to Cybersecurity &amp; SWE Roles, Mumbai</span>
-          </div>
-
-          <div class="space-y-2">
-            <h1 class="text-4xl sm:text-5xl font-extrabold tracking-tight text-slate-900 dark:text-white leading-[1.1]">
-              Stavan Wadekar
-            </h1>
-            <p class="text-lg sm:text-xl font-semibold text-sky-600 dark:text-sky-400">
-              Software Engineer / Cybersecurity &amp; DevSecOps
-            </p>
+          <div class="flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-6">
+            <div class="relative shrink-0 group">
+              <div class="absolute -inset-1 rounded-2xl bg-gradient-to-tr from-sky-500 via-indigo-500 to-emerald-400 opacity-60 blur-sm group-hover:opacity-90 transition-opacity"></div>
+              <img src="assets/stavan-wadekar-800.jpg" alt="Stavan Wadekar" class="relative w-24 h-24 sm:w-28 sm:h-28 rounded-2xl object-cover border-2 border-white/40 dark:border-sky-400/50 shadow-2xl" />
+              <span class="absolute -bottom-1 -right-1 flex h-4 w-4">
+                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                <span class="relative inline-flex rounded-full h-4 w-4 bg-emerald-500 border-2 border-white dark:border-obsidian"></span>
+              </span>
+            </div>
+            <div class="space-y-1.5">
+              <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-medium border border-emerald-500/30 bg-emerald-500/10 text-emerald-700 dark:text-emerald-300">
+                <span class="w-2 h-2 rounded-full bg-emerald-400 live-dot"></span>
+                <span>Open to Cybersecurity &amp; SWE Roles, Mumbai</span>
+              </div>
+              <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-slate-900 dark:text-white leading-[1.1]">
+                Stavan Wadekar
+              </h1>
+              <p class="text-base sm:text-lg font-semibold text-sky-600 dark:text-sky-400">
+                Software Engineer / Cybersecurity &amp; DevSecOps
+              </p>
+            </div>
           </div>
 
           <p class="text-slate-600 dark:text-slate-300 text-base leading-relaxed max-w-2xl">
